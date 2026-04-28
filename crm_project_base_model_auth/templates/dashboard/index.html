@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Главная панель{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="dashboard-header">
+        <h1>Добро пожаловать, {{ user.get_full_name|default:user.username }}!</h1>
+    </div>
+
+    <!-- Карточки статистики -->
+    <div class="stats-row">
+    <a href="{% url 'clients:client_list' %}" class="stat-card-link">
+        <div class="stat-card">
+            <div class="stat-title">Клиенты</div>
+            <div class="stat-value">{{ total_clients }}</div>
+            <i class="fas fa-users stat-icon"></i>
+        </div>
+    </a>
+    <a href="{% url 'contracts:contract_list' %}" class="stat-card-link">
+        <div class="stat-card">
+            <div class="stat-title">Активные контракты</div>
+            <div class="stat-value">{{ active_contracts }}</div>
+            <i class="fas fa-file-contract stat-icon"></i>
+        </div>
+    </a>
+    <a href="{% url 'analytics:dashboard' %}" class="stat-card-link">
+        <div class="stat-card">
+            <div class="stat-title">Выручка (активные)</div>
+            <div class="stat-value">{{ total_revenue|floatformat:0 }} ₽</div>
+            <i class="fas fa-ruble-sign stat-icon"></i>
+        </div>
+    </a>
+    <a href="{% url 'tasks:task_list' %}?status=overdue" class="stat-card-link">
+        <div class="stat-card">
+            <div class="stat-title">Просроченные задачи</div>
+            <div class="stat-value">{{ overdue_tasks }}</div>
+            <i class="fas fa-exclamation-triangle stat-icon"></i>
+        </div>
+    </a>
+        <!-- В блоке stats-row добавьте ещё одну карточку -->
+    <div class="stat-card">
+        <div class="stat-title">Оплачено / Ожидается</div>
+        <div class="stat-value">{{ paid_amount|floatformat:0 }} ₽ / {{ expected_amount|floatformat:0 }} ₽</div>
+        <i class="fas fa-credit-card stat-icon"></i>
+    </div>
+</div>
+
+    <!-- Графики -->
+    <div class="charts-row">
+        <div class="chart-card">
+            <h3>Выручка по месяцам</h3>
+            <canvas id="revenueChart" width="400" height="250"></canvas>
+        </div>
+        <div class="chart-card">
+            <h3>Статусы задач</h3>
+            <canvas id="taskStatusChart" width="400" height="250"></canvas>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/index.js' %}"></script>
+<script>
+    // Передаём данные из контекста в глобальный объект
+    window.chartData = {
+        months: {{ months|safe }},
+        revenues: {{ revenues|safe }},
+        statusLabels: {{ status_labels|safe }},
+        statusData: {{ status_data|safe }}
+    };
+</script>
+{% endblock %}

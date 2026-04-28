@@ -1,0 +1,14 @@
+Django>=5.1,<5.2
+djangorestframework
+djangorestframework-simplejwt
+drf-spectacular
+psycopg2-binary
+dj-database-url
+whitenoise
+gunicorn
+celery
+redis
+python-dotenv
+openpyxl
+django-filter
+Pillow
