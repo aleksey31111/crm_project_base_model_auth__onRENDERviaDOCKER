@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'analytics.apps.AnalyticsConfig',
     'notifications.apps.NotificationsConfig',
     'logs.apps.LogsConfig',
-    'telegram_bot',
+    # 'telegram_bot',
 ]
 
 MIDDLEWARE = [
