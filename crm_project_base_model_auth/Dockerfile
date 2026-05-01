@@ -23,5 +23,6 @@ RUN python manage.py collectstatic --noinput
 # ENV DATABASE_URL=
 
 EXPOSE 8000
+# Вместо одной команды CMD, запускаем миграции и затем сервер
 
-CMD ["gunicorn", "crm_project_base_model_auth.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["sh", "-c", "python manage.py migrate && gunicorn crm_project_base_model_auth.wsgi:application --bind 0.0.0.0:8000"]
