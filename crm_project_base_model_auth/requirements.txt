@@ -12,3 +12,4 @@ python-dotenv
 openpyxl
 django-filter
 Pillow
+python-telegram-bot==20.7

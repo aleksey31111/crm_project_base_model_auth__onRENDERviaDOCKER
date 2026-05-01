@@ -1,4 +1,3 @@
-# Dockerfile on Render via Docker
 FROM python:3.12-slim
 
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -14,8 +13,14 @@ RUN pip install -r requirements.txt
 # Копируем проект
 COPY . .
 
+# Временно задаём фиктивную БД только для сбора статики
+ENV DATABASE_URL=sqlite:///:memory:
+
 # Собираем статику
 RUN python manage.py collectstatic --noinput
+
+# Удаляем фиктивную переменную (необязательно, но для чистоты)
+# ENV DATABASE_URL=
 
 EXPOSE 8000
 

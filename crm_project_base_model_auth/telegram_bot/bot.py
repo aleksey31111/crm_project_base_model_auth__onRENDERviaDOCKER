@@ -1,11 +1,15 @@
 import logging
 from django.conf import settings
 from django.urls import reverse
-from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+# from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, CallbackContext
 from contracts.models import Contract, Payment
 from .models import TelegramUser
-
+try:
+    from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+except ImportError:
+    # Если библиотека не установлена, просто пропускаем
+    pass
 logger = logging.getLogger(__name__)
 
 async def start(update: Update, context: CallbackContext):

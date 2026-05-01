@@ -4,6 +4,11 @@ from tasks.models import Task
 from contracts.models import Contract, Payment
 from .models import TelegramUser
 from .bot import send_telegram_notification
+try:
+    from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+except ImportError:
+    # Если библиотека не установлена, просто пропускаем
+    pass
 
 @receiver(post_save, sender=Task)
 def task_notification(sender, instance, created, **kwargs):
