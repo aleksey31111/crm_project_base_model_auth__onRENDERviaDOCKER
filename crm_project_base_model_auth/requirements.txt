@@ -13,3 +13,4 @@ openpyxl
 django-filter
 Pillow
 python-telegram-bot==20.7
+yookassa>=3.10
