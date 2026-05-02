@@ -1,0 +1,109 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+pythonenv*
+
+# Django / Framework
+*.log
+*.pot
+*.pyc
+local_settings.py
+db.sqlite3
+media/
+#staticfiles/
+static/
+
+# Environment variables
+.env
+.env.local
+.env.production
+.env.*.local
+
+# Docker
+*.pid
+docker-compose.override.yml
+.dockerignore
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Testing
+.coverage
+.coverage.*
+.htmlcov/
+.pytest_cache/
+.tox/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Celery
+celerybeat.pid
+celerybeat-schedule
+celerybeat.pid
+
+# Redis
+dump.rdb
+
+# Project specific
+*.db
+*.sqlite3
+secrets/
+keys/
+*.pem
+*.crt
+*.key
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Render specific (optional - keep if needed locally)
+.render/
+*.render.yaml
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+
+# Database backups
+*.sql
+*.dump
+
+# Secret files
+config/secrets.yml
+config/secrets.yaml
+.env.render
