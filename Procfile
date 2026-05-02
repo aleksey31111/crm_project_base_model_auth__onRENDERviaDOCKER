@@ -1,1 +1,0 @@
-web: gunicorn crm_project_base_model_auth.wsgi:application
