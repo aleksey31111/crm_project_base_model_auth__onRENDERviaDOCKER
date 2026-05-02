@@ -25,4 +25,7 @@ RUN python manage.py collectstatic --noinput
 EXPOSE 8000
 # Вместо одной команды CMD, запускаем миграции и затем сервер
 
-CMD ["sh", "-c", "python manage.py migrate && gunicorn crm_project_base_model_auth.wsgi:application --bind 0.0.0.0:8000"]
+CMD ["sh", "-c", "\
+    python manage.py migrate && \
+    python manage.py populate_db_docker && \
+    gunicorn crm_project_base_model_auth.wsgi:application --bind 0.0.0.0:8000"]
