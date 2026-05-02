@@ -1,4 +1,4 @@
-# crm_project_base_model_auth/celery.py
+# crm_project_base_model_auth/local_celery_script.py
 import os
 from celery import Celery
 from celery.schedules import crontab
