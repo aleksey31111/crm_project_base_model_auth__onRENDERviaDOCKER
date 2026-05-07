@@ -294,9 +294,16 @@ class ContractUpdateView(LoginRequiredMixin, UpdateView):
         form.instance.created_by = self.request.user
         response = super().form_valid(form)
         # Асинхронная отправка email
-        send_contract_created_email.delay(self.object.id)
-        messages.success(self.request, 'Контракт успешно создан.')
+        #send_contract_created_email.delay(self.object.id)
+        # Асинхронная отправка email – если Redis недоступен, просто пропускаем
+        try:
+            send_contract_created_email.delay(self.object.id)
+        except Exception:
+            # Пропускаем отправку письма (Redis не запущен)
+            pass
+        messages.success(self.request, 'Контракт успешно обновлён.')
         return response
+
 
 
 class ContractDeleteView(LoginRequiredMixin, DeleteView):

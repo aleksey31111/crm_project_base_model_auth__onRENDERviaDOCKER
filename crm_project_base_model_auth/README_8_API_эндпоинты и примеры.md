@@ -167,7 +167,7 @@ Authorization: Bearer <access_token>
 
 Базовый URL: `http://127.0.0.1:8000/api/docs/#/`
 ```bash
-curl.exe -X POST http://127.0.0.1:8000/api/token/ -H "Content-Type: application/json" -d '{\"username\":\"admin\",\"password\":\"123456\"}'
+curl -X POST https://crm-project-cubu.onrender.com/api/token/ -H "Content-Type: application/json" -d "{\"username\":\"sidorova\",\"password\":\"support123\"}"
 ```
 curl.exe -X GET "http://127.0.0.1:8000/api/clients/" -H "Authorization: Bearer access
 
